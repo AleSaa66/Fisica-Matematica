@@ -1,5 +1,5 @@
 # Física-Matemática
-Repositorio de mi apunte de Física Matemática.
+Repositorio de mi apunte (en construcción) de Física Matemática.
 
 ## Contenidos:
 
