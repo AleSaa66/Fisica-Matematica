@@ -1,6 +1,9 @@
 # Física-Matemática
 Repositorio de mi apunte (en construcción) de Física Matemática.
 
+
+La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1luIxjjkQiHHaHjIkFwocwK7k4E-3bflC/view?usp=sharing).
+
 ## Contenidos:
 
 * Espacio de funciones
