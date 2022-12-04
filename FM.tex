@@ -1,0 +1,129 @@
+\documentclass[letterpaper,12pt]{report}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts,amsmath,color,amssymb,float, amsthm,mathrsfs}  
+\usepackage[right=3cm,left=2cm,top=2cm,bottom=2cm,headsep=0.7cm,footskip=0.5cm]{geometry}
+\usepackage{enumerate}
+\usepackage{wrapfig} 
+\usepackage[rflt]{floatflt} 
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor} 
+\colorlet{shadecolor}{green!20}
+\setlength\FrameSep{0.5ex}
+\usepackage{thmtools}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{listings} 
+\usepackage{pstricks, caption}
+\usepackage[colorlinks]{hyperref}
+\usepackage{csquotes}
+\usepackage{fullpage}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,babel}
+
+
+\decimalpoint
+\newcommand{\grad}{^\circ}
+\newlength{\drop}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\Log}{Log}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+%%%%%%%%%Entornos: Teoremas, Defs,etc%%%%%%%
+\theoremstyle{definition}
+
+\newtheorem{defis}{Definiciones}[section]
+\newtheorem{corolario}{Corolario}[section] 
+\newtheorem{lema}{Lema}[section] 
+
+\newtheorem{protoexample}{Ejemplo}[section]
+\newenvironment{ejemplo}
+   {\colorlet{shadecolor}{orange!15}\begin{shaded}\begin{protoexample}}
+   {\end{protoexample}\end{shaded}}
+
+\newtheorem*{protoproof}{Demostración}
+\newenvironment{demo}
+   {\colorlet{shadecolor}{blue!10}\begin{shaded}\begin{protoproof}}
+   {\end{protoproof}\end{shaded}}
+
+\newenvironment{Rdbleftbar}{%
+  \def\FrameCommand{\textcolor{red}{\vrule width0.6pt}\hspace{0.15em}\textcolor{red}{\vrule width0.6pt} \hspace{0.5em}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
+ \newenvironment{Bdbleftbar}{%
+  \def\FrameCommand{\vrule width0.6pt\hspace{0.15em}\vrule width0.6pt \hspace{0.5em}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
+\newenvironment{Gdbleftbar}{%
+  \def\FrameCommand{\textcolor{green}{\vrule width0.6pt}\hspace{0.15em}\textcolor{green}{\vrule width0.6pt} \hspace{0.5em}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+ 
+% With parskip
+
+\usepackage[indent=0.6cm]{parskip}
+
+\declaretheorem[%
+name            =Teorema,%
+numberwithin=section,
+postheadhook    =\vspace*{\parskip} \begin{Rdbleftbar}\vspace*{-5pt},%
+prefoothook     =\vspace*{-1pt}\end{Rdbleftbar}%
+]{teorema}
+
+\declaretheorem[%
+name            =Definición,%
+numberwithin=section,
+postheadhook    =\vspace*{\parskip}\begin{Bdbleftbar}\vspace*{-5pt},%
+prefoothook     =\vspace*{-1pt}\end{Bdbleftbar}%
+]{defi}
+
+\declaretheorem[%
+name            = Proposición,%
+numberwithin=section,
+postheadhook    =\vspace*{\parskip}\begin{Gdbleftbar}\vspace*{-5pt},%
+prefoothook     =\vspace*{-1pt}\end{Gdbleftbar}%
+]{propo}   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%Fancy Chapters%%%%%%%%%%%%%%%%%
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Referencias
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Referencias.bib}
+
+\begin{document}
+
+\begin{titlepage}
+ \drop=0.1\textheight
+    \centering
+    \vspace*{\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\scshape\Huge Física matemática} \\[0.2\baselineskip]
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    {\Large Autor: \par}
+{\Large Alejandro Saavedra \par}
+\vfill
+{\large Diciembre 2022 \par}
+{\large v1.0 \par}
+\end{titlepage}
+
+\tableofcontents
+
+\input{./Cap-Espacio-de-Funciones.tex}
+
+\nocite{*} %Referencia todo, incluso lo que no está citado.
+\printbibliography[title={Referencias}]
+
+\end{document}
