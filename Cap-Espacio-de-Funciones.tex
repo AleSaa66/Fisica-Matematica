@@ -667,27 +667,6 @@ Note que la idea de la definición de sumabilidad de Cesàro es encontrar una fo
 Si una serie es convergente con suma $S$, entonces es sumable de Cesàro con suma $S^* = S$.
 \end{teorema}
 
-\begin{demo}
-Sea $s_n$ la suma parcial $n$-ésima de la serie. Por hipótesis, dado $\varepsilon > 0$, $\exists N \in \mathbb{N}$ tal que 
-$$\forall n \geq N ~\Rightarrow~ |s_n -S| < \frac{\varepsilon}{2}.$$
-
-Por propiedad arquimediana, $\exists M \in \mathbb{N}$ tal que 
-$$M > \frac{2}{\varepsilon} \left( \sum_{k = 1}^N |s_k - S| \right )- N ~\Rightarrow~ \frac{1}{N+M} \sum_{k = 1}^N |s_k - S| <  \frac{\varepsilon}{2}.$$
-
-Luego, para todo $n > N + M$, tenemos 
-\begin{align*}
-    |\sigma_n - S| = \left| \frac{1}{n} \sum_{k=1}^n s_k - S \right| = \left| \frac{1}{n} \sum_{k=1}^n s_k - \frac{1}{n} \sum_{k=1}^n S \right| 
-    &= \frac{1}{n} \left|  \sum_{k=1}^n (s_k - S) \right| \\
-    &\leq \frac{1}{n} \sum_{k=1}^n |s_k - S| \\
-    &= \frac{1}{n} \left( \sum_{k=1}^N |s_k - S| + \sum_{k = N+1}^n |s_k - S| \right) \\
-    &< \frac{1}{n}\left( \sum_{k=1}^N |s_k - S| + (n-N) \frac{\varepsilon}{2} \right) \\ 
-    &=\frac{1}{n } \sum_{k=1}^N |s_k - S| + \frac{n-N}{n} \frac{\varepsilon}{2} \\
-    &< \frac{1}{N+M} \sum_{k=1}^N |s_k - S| + \frac{\varepsilon}{2} \\
-    &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon. 
-\end{align*}
-$$\therefore \lim_{n \to + \infty} \sigma_n = S.$$
-\end{demo}
-
 Problemas similares a la serie discreta anterior ofrece calcular la integral, desde cero hasta infinito, de una función oscilante, que no decrece, del tipo $\int_0^{\infty} \sin(\omega x) \,dx$.
 
 En el espíritu del caso discreto, proponemos la siguiente definición.
