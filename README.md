@@ -2,7 +2,7 @@
 Repositorio de mi apunte (en construcción) de Física Matemática.
 
 
-La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1luIxjjkQiHHaHjIkFwocwK7k4E-3bflC/view?usp=sharing).
+La versión actualizada del archivo .pdf compilado lo puede encontrar en este [link](https://drive.google.com/file/d/1luIxjjkQiHHaHjIkFwocwK7k4E-3bflC/view?usp=sharing). Además, las demostraciones que no se encuentran en el apunte, estarán en el siguiente documento extra donde puede acceder en este otro [link](https://drive.google.com/file/d/1FVmw5Z-zw75ktq2_cGqdN17xgEpP6msq/view?usp=sharing)
 
 ## Contenidos:
 
