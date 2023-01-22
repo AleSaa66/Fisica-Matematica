@@ -289,7 +289,7 @@ Si $f(x) \in \mathbb{R}$ e impar, entonces
      &= -\frac{2i}{2\pi} \int_{0}^{\infty} f(x) \sin(kx) \,dx \equiv - i  \tilde{f}_S(k),
      \end{align*}
      
-     donde $\tilde{f}_S$ es conocida como la \textbf{transformada seno de Fourier} de la función $f(x)$, y viene definida por 
+     donde $\tilde{f}_S$ es conocida como la \textbf{transformada seno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch} 
      $$\boxed{\tilde{f}_S(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \sin(kx) \,dx}$$
      
 Análogamente a la definición de la  transformada seno de Fourier, si $f(x) \in \mathbb{R}$ y par, entonces 
@@ -301,10 +301,10 @@ Análogamente a la definición de la  transformada seno de Fourier, si $f(x) \in
      &= \frac{2}{2\pi} \int_{0}^{\infty} f(x) \cos(kx) \,dx \equiv  \tilde{f}_C(k),
      \end{align*}
      
-donde $\tilde{f}_C$ es conocida como la \textbf{transformada coseno de Fourier} de la función $f(x)$, y viene definida por 
-     $$\boxed{\tilde{f}_S(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \cos(kx) \,dx}$$
+donde $\tilde{f}_C$ es conocida como la \textbf{transformada coseno de Fourier} de la función $f(x)$, y viene definida por \cite{Mauch}
+     $$\boxed{\tilde{f}_C(k) = \frac{1}{\pi}  \int_{0}^{\infty} f(x) \cos(kx) \,dx}$$
 
-\textbf{Observación: } Esta forma de escribir la transformada seno y coseno de Fourier es convencional, por el factor $1/\pi$ y fueron adaptadas de \cite{Arfken} de tal forma que se siga la convención de este apunte.
+\textbf{Observación: } Esta forma de escribir la transformada seno y coseno de Fourier es convencional, por el factor $1/\pi$.
 \end{ejemplo}
 
 \begin{comment}
@@ -339,7 +339,7 @@ Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
 \end{propo}
 
 \begin{demo}
-\
+A modo de ejemplo, se demostrará los puntos 1. y 2., el resto se encontrará en el documento extra de las demostraciones del apunte. 
 
 \begin{enumerate}
     \item Por la definición \eqref{T.Fourier} de la transformada de Fourier y usando el hecho de que las funciones son absolutamente convergentes, tenemos
@@ -356,49 +356,6 @@ Sean $f, g \in L^1$ y $\alpha, \beta \in \mathbb{C}.$
         &= \frac{1}{2\pi} \int_{-\infty}^{\infty}  [f(x)  e^{-ikx}]^* dx \\
         &= (\mathcal{F}\{f(x)\}(k))^*.
     \end{align*}
-    
-    \item Por la definición \eqref{T.Fourier} de la transformada de Fourier, se tiene que
-$$\mathcal{F}\{f(x+a)\}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x+a) e^{-ikx} dx. $$
-
-Haciendo la sustitución $s = x +a ~\Rightarrow~ ds = dx$:
-\begin{eqnarray*}
- \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x+a) e^{-ikx} dx &=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(s) e^{-ik(s-a)} \,ds \\
- &=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(s) e^{-iks+ika} \,ds \\
-&=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(s) e^{-iks} e^{ika} \,ds \\
-&=& e^{ika}  \left(\frac{1}{2\pi} \int_{-\infty}^{\infty} f(s) e^{-iks} \,ds \right) \\
-&=& e^{ika} \mathcal{F}\{f(x)\}(k).
-\end{eqnarray*}
-
-\item Por la definición \eqref{T.Fourier} de la transformada de Fourier, tenemos que
-\begin{eqnarray*}
-\mathcal{F}\{f(x) e^{-ax}\}(k) &=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ax} e^{-ikx} dx \\
-&=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx-ax} dx \\
-&=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ikx+i^{2}ax} dx \\
-&=& \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x) e^{-ix(k-ia)} dx \\
-&=&  \mathcal{F}\{f(x)\}(k-ia).
-\end{eqnarray*}
-
-\item Usando la definición \eqref{T.Fourier} de la transformada de Fourier, obtenemos que 
-\begin{equation}
-  \mathcal{F}\{f(\alpha x)\}(k) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(\alpha x) e^{-ikx} dx.   \label{PropiedadTransformada}
-\end{equation}
-
-Supongamos que $\alpha > 0$, entonces hacemos el cambio de variable $u = \alpha x ~\Rightarrow~ du = \alpha dx$, para así obtener
-\begin{align*}
-     \frac{1}{2\pi} \int_{-\infty}^{\infty} f(\alpha x) e^{-ikx} dx &= \frac{1}{\alpha} \left( \frac{1}{2\pi} \int_{-\infty}^{\infty} f(u) e^{-i(k/\alpha)u} \,du \right) \\
-     &= \frac{1}{\alpha} \mathcal{F}\{f(x)\} \left(\frac{k}{\alpha} \right).
-\end{align*}
-
-Ahora, si $\alpha < 0$, hacemos el mismo cambio de variable  en \eqref{PropiedadTransformada}:
-\begin{align*}
-     \frac{1}{2\pi} \int_{-\infty}^{\infty} f(\alpha x) e^{-ikx} dx &= \frac{1}{\alpha} \left( \frac{1}{2\pi} \int_{\infty}^{-\infty} f(u) e^{-i(k/\alpha)u} \,du \right) \\
-     &= - \frac{1}{\alpha} \left( \frac{1}{2\pi} \int_{-\infty}^{\infty} f(u) e^{-i(k/\alpha)u} \,du \right) \\
-     &= -\frac{1}{\alpha} \mathcal{F}\{f(x)\} \left(\frac{k}{\alpha} \right).
-\end{align*}
-
-Por lo tanto, 
-$$\mathcal{F}\{f(\alpha x)\}(k) = \frac{1}{|\alpha|}\mathcal{F}\{f(x)\}\left(\frac{k}{ \alpha}\right), \quad \alpha \neq 0.$$
-
 \end{enumerate}
 \end{demo}
 
@@ -512,7 +469,6 @@ donde  $f(\Vec{x}) = 1/|\Vec{x}|$.
     \label{fig:IdeaConvolucion}
 \end{figure}
 
-
 Entonces, $f * g$ mide el grado de traslape entre $f(y)$ y $g(-y)$, luego de trasladar $g$ a una distancia $x$.
 
 \begin{propo}[Propiedades de la convolución]
@@ -527,48 +483,7 @@ Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales, se verifica:
 \end{enumerate}
 \end{propo}
 
-\begin{demo}
-\ 
-
-\begin{enumerate}
-    \item Por \eqref{Convolucion}, se tiene
-    $$(f*g)(x) =  \int_{-\infty}^{\infty} f(y) g(x-y) \,dy.$$
-    
-    Haciendo el cambio de variable $u = x-y ~\Rightarrow~ du = -dy$,
-    $$ (f*g)(x) = - \int_{\infty}^{-\infty} f(x-u) g(u) \,du =  \int_{-\infty}^{\infty} g(u) f(x-u) \,du = (g*f)(x).$$
-    
-    \item Por definición:
-    \begin{align}
-        f(x)*[g(x)*h(x)] &=  \int_{-\infty}^{\infty} f(y) (g*h)(x-y) \,dy \nonumber\\
-        &=  \int_{-\infty}^{\infty} f(y) \left( \int_{-\infty}^{\infty} g(z) h(x-y-z) \,dz \right) \,dy  \nonumber\\
-        &= \int_{-\infty}^{\infty}  \left(\int_{-\infty}^{\infty}  f(y) g(z) h(x-y-z) \,dz \right) \,dy. \label{Convolucion1}
-    \end{align}
-    
-    y
-     \begin{align}
-        [f(x)*g(x)]*h(x) &= \int_{-\infty}^{\infty} (f*g)(y) h(x-y) \,dy \nonumber \\
-        &=  \int_{-\infty}^{\infty} h(x-y) \left( \int_{-\infty}^{\infty} f(z) g(y-z) \,dz \right) \,dy  \nonumber \\
-        &=  \int_{-\infty}^{\infty}  \left(\int_{-\infty}^{\infty}  f(z) g(y-z) h(x-y) \,dz \right) \,dy \label{Convolucion2}
-    \end{align}
-    
-    Haciendo el cambio de variable $w = y+z ~\Rightarrow~ dw = dz$ en la integral interior de \eqref{Convolucion1}, obtenemos que 
-    $$ f(x)*[g(x)*h(x)] = \int_{-\infty}^{\infty} \left(\int_{-\infty}^{\infty}  f(y) g(w-y) h(x-w) dw\right) dy.$$
-    
-    Si el intercambio de orden de integración es posible, entonces 
-      $$ f(x)*[g(x)*h(x)] =  \int_{-\infty}^{\infty} \left(\int_{-\infty}^{\infty}  f(y) g(w-y) h(x-w) dy\right) dw.$$
-    
-    Comparando con \eqref{Convolucion2}, concluimos que 
-    $$[f(x)*g(x)]*h(x) = f(x) * [g(x) * h(x)].$$
-    
-    \item Por definición,
-    \begin{align*}
-        f(x)*[g(x)+h(x)] &=  \int_{-\infty}^{\infty} f(y) (g+h)(x-y) \,dy \\
-        &= \int_{-\infty}^{\infty} f(y) [g(x-y) + h(x-y)] \,dy \\
-        &=  \int_{-\infty}^{\infty} f(y)  g(x-y) \,dy +  \int_{-\infty}^{\infty}  f(y)h(x-y) \,dy \\
-        &=  f(x)*g(x) + f(x)*h(x).
-    \end{align*}
-\end{enumerate}
-\end{demo}
+\newpage
 
 \begin{teorema}[de convolución de Fourier]
 Sean $f(x)$, $g(x)$ y $h(x)$  funciones reales y sean $\tilde{f}(k)$, $\tilde{g}(k)$ y $\tilde{h}(k)$ sus correspondientes transformadas de Fourier. 
