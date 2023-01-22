@@ -261,10 +261,6 @@ $$\frac{f(t^+) + f(t^-)}{2}$$
 para cada $t \in (-\pi,\pi)$ donde ambas derivadas laterales $f'(t^+)$ y $f'(t^-)$ existen.
 \end{teorema}
 
-\begin{demo}
-    Consultar la sección \ref{DemostracionesFourier}
-\end{demo}
-
 \textbf{Observación:} Si denotamos por $f_e$ a la extensión periódica de $f$, a partir del teorema anterior, la expansión en serie de Fourier converge a $f_e$ para todo $x \in \mathbb{R}$ al extenderla periódicamente al valor medio
 $$\frac{f_e(t^+) + f_e(t^-)}{2}.$$
 
@@ -282,10 +278,6 @@ Análogamente para $t = \pi$.
 \begin{teorema}[Convergencia uniforme] \label{C.Uniforme}
 Supóngase que $f$ es continua en $[-\pi,\pi]$, $f(-\pi) = f(\pi)$ y que $f'$ es continua por tramos, con discontinuidades de salto. Entonces la serie de Fourier trigonométrica de $f$ converge a $f$ absolutamente y uniformemente.
 \end{teorema}
-
-\begin{demo}
-    Consultar la sección \ref{DemostracionesFourier}
-\end{demo}
 
 \subsection{Ejemplos}
 
@@ -419,6 +411,8 @@ Usando la identidad de Euler, $e^{i\theta} = \cos(\theta) + i \sin(\theta)$, enc
 $$s_n(t) = c_0 +  \sum_{k=1}^n [(c_k + c_{-k}) \cos(kt) + i(c_k - c_{-k}) \sin(kt)].$$
 
 Desarrollando los coeficientes de la serie exponencial de Fourier, tenemos que
+\begingroup
+\allowdisplaybreaks
 \begin{align*}
     c_0 &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) \,dt, \\
     c_k + c_{-k} &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-ikt} \,dt + \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{ikt} \,dt  \\
@@ -428,6 +422,7 @@ Desarrollando los coeficientes de la serie exponencial de Fourier, tenemos que
    &= - \frac{i}{2\pi} \int_{-\pi}^{\pi} f(t) [e^{ikt} - e^{-ikt}] \,dt \\
    &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(kt)\,dt; \quad k = 1,2, \dots
 \end{align*}
+\endgroup
 
 Comparando las expresiones obtenidas con los coeficientes de la serie de Fourier trigonométrica, podemos concluir que 
 $$c_0 = \frac{a_0}{2}, ~  c_k + c_{-k} = a_k, ~ i( c_k - c_{-k}) = b_k; \quad k = 1,2, \dots$$
@@ -470,9 +465,6 @@ Sea $f$ una función seccionalmente continua en el intervalo $-\pi < t < \pi$. I
 \end{equation*}
 \end{teorema}
 
-\begin{demo}
-Consultar la sección \ref{DemostracionesFourier}.
-\end{demo}
 
 \begin{teorema}[Derivación]
 Sea $f$ una función continua en $[-\pi,\pi]$, donde $f(-\pi) = f(\pi)$, y $f'$ es seccionalmente continua en el intervalo $(-\pi,\pi)$. Entonces, la serie de Fourier
@@ -489,9 +481,6 @@ es derivable para todo $t \in (-\pi,\pi)$ en el cual $f''(t)$ existe:
 \end{equation*}
 \end{teorema}
 
-\begin{demo}
-Consultar la sección \ref{DemostracionesFourier}.
-\end{demo}
 
 \begin{ejemplo}
 Obtener el desarrollo en serie de Fourier de la función $x^3$ en el intervalo $[-\pi,\pi]$.
@@ -579,14 +568,13 @@ $$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx \frac{\pi}{2} s_n\left( \frac{\pi}{
 Como 
 $$\int_0^{\pi} \frac{\sin y}{y} \,dy ~~ \mbox{converge} ~\Rightarrow~ \lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) = \frac{2}{\pi} \int_0^{\pi} \frac{\sin y}{y} \,dy.$$
 
-Usando un método numérico de integración (o su calculadora de integrales favorita), se tiene que 
+Usando un método numérico de integración (o su calculadora de integrales favorita), 
 $$\int_0^{\pi} \frac{\sin y}{y} \,dy \approx 1.85193\dots$$
 
 Por lo tanto, 
 $$\lim_{n \to + \infty} s_n\left( \frac{\pi}{2n} \right) \approx 1.179.$$
 
 Así, las aproximaciones exceden el valor real de $f(0^+) = 1$ por $0.179$ o $8.95\%$ del salto de $f(0^-)$ a $f(0^+)$. 
-\\
 
 En general, se puede demostrar el siguiente teorema, debido a M. B$\hat{\mbox{o}}$cher \cite{Bôcher}:
 
@@ -597,15 +585,13 @@ $$L = \frac{2}{\pi} Si(\pi) |f(a^+) - f(a^-)| \approx 1.179 |f(a^+) - f(a^-)|$$
 centrada en el punto 
 $$\left(a, \frac{f(a^+) + f(a^-)}{2} \right),$$
 
-donde 
-$$Si(x) = \int_0^x \frac{\sin t}{t} \,dt$$
-
-es la función seno integral.
+donde $Si(x)$ es la función seno integral definida por
+$$Si(x) = \int_0^x \frac{\sin t}{t} \,dt.$$
 \end{teorema}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.55]{Figuras/Gibbs.pdf}
+    \includegraphics[scale = 0.51]{Figuras/Gibbs.pdf}
     \caption{Fenómeno de Gibbs en un punto de discontinuidad. Adaptado de \cite{UFRO}, pág. 202.}
     \label{Gibbs}
 \end{figure}
@@ -664,335 +650,3 @@ con
     b_n &= \frac{2}{T} \int_a^b f(x) \sin(\omega_n x) \,dx; \quad n = 1,2 \dots
 \end{align*}   
 \end{shaded}
-
-\section{Demostraciones de teoremas} \label{DemostracionesFourier}
-
-\subsection*{Convergencia puntual}
-
-Antes de demostrar el teorema de la convergencia puntual, discutiremos dos lemas. El primero es un caso especial del conocido \textbf{lema de Riemann-Lebesgue}.
-
-\begin{lema} \label{lema1}
-Sea $g(u)$ una función seccionalmente continua en el intervalo $0 <u < \pi$. Entonces, 
-\begin{equation}
-    \lim_{n \to + \infty} \int_0^{\pi} g(u) \sin [(n + 1/2)u] \,du = 0 \label{LemaFourier1}
-\end{equation}
-
-donde $n$ es un entero positivo.
-\end{lema}
-
-\begin{demo}
-Usando la identidad trigonométrica 
-$$\sin(\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta,$$
-
-tenemos que
-\begin{align*}
-    \int_0^{\pi} g(u) \sin [(n + 1/2)u] \,du &= \int_0^{\pi} g(u) \sin \left( \frac{u}{2} + n u\right) \,du \\
-    &= \int_0^{\pi} g(u) \sin\left( \frac{u}{2}\right) \cos(nu) \,du + \int_0^{\pi} g(u) \cos \left( \frac{u}{2}\right) \sin(nu) \,du.
-\end{align*}
-
-Ahora, excepto por un factor de $2/\pi$, la primera de estas integrales es el coeficiente $a_n$ en la serie de Fourier de cosenos para la función seccionalmente continua $g(u) \sin(u/2)$ en el intervalo $0 < u < \pi$. La otra integral es, excepto por un factor de $2/\pi$, el coeficiente $b_n$ en la serie de Fourier de senos para la función seccionalmente continua $g(u) \cos(u/2)$ en el mismo intervalo. Por lo tanto, usando la proposición \ref{C.FourierCero}, el lema queda demostrado.
-\end{demo}
-
-\newpage
-
-Nuestro segundo lema involucra el \textbf{núcleo de Dirichlet}:
-  \begin{equation}
-  \boxed{  D_n(u) = \frac{1}{2} + \sum_{k=1}^n \cos(ku), \quad n \in \mathbb{N}} \label{DirichletKernel}
-\end{equation}  
-
-Notemos que $D_n(u)$ es continuo, par y periódico con período $2\pi$. El núcleo de Dirichlet juega un importante papel en nuestra teoría y otras dos propiedades que nos serán útiles son:
-\begin{align}
-    \int_0^{\pi} D_n(u) \,du &= \frac{\pi}{2}, \label{DirichletKernel1} \\
-    D_n(u) &= \frac{\sin[(n+1/2)u]}{2 \sin(u/2)}, \qquad u \neq 0, \pm 2\pi, \pm 4\pi, \dots \label{DirichletKernel2}
-\end{align}
-
-Es fácil de ver que la propiedad \eqref{DirichletKernel1} se cumple. Por otro lado, para verificar la propiedad \eqref{DirichletKernel2},  desarrollemos la expresión
-$$ \sum_{k = -n}^{n} e^{i k u}.$$
-
-Primero, efectuemos el cambio de índice $m = k + n$ de tal forma que el índice $m$ se mueva desde $m = 0$ hasta $m = 2n$.
-$$ \sum_{k = -n}^{n} e^{i k u} = \sum_{m = 0}^{2n} e^{i(m-n)u} = e^{-inu} \sum_{m=0}^{2n}\left( e^{iu}\right)^m.$$
-
-Reconocemos la suma de una progresión geométrica,
-$$\sum_{k=0}^n r^k = \frac{1-r^{n+1}}{1-r},$$
-
-con $r = e^{iu}, 0 < u < 2\pi$. Luego,
-\begin{align*}
-e^{-inu} \sum_{m=0}^{2n}\left( e^{iu}\right)^m &= e^{-inu} \frac{1-\left( e^{iu}\right)^{2n+1}}{1-e^{iu}} \textcolor{red}{\cdot \frac{e^{-iu/2}}{e^{-iu/2}}} \\
-&= \frac{e^{-i(n + 1/2)u} - e^{i(n+1/2)u}}{e^{-iu/2} - e^{i u/2}} \\
-&= \frac{-2i \sin[(n+1/2) u]}{-2i \sin(u/2)} \\
-&=  \frac{\sin[(n+1/2) u]}{\sin(u/2)}.
-\end{align*}
-
-Ahora,
-\begin{equation*}
-     \sum_{k= -n}^{n} e^{i k u} = \sum_{k=-n}^{-1} e^{iku} + 1 + \sum_{k=1}^n e^{iku} = 1 + \sum_{k=1}^n [e^{iku} + e^{-iku}] = 1 + 2 \sum_{k=1}^n \cos(ku).
-\end{equation*}
-
-Entonces, 
-\begin{shaded}
- \begin{equation}
- D_n(u) = \frac{1}{2} + \sum_{k=1}^n \cos(ku) = \frac{\sin[(n+1/2)u]}{2 \sin(u/2)}, \quad u \neq 0, \pm 2\pi, \pm 4\pi, \dots    \label{NucleoDirichlet}
-\end{equation}   
-\end{shaded}
-
-\begin{lema} \label{lema2}
-Supongamos que una función $g(u)$ es seccionalmente continua en el intervalo $0 < u < \pi$ y que la derivada por la derecha $g'(0^+)$ existe. Entonces,
-\begin{equation}
-    \lim_{n \to + \infty} \int_0^{\pi} g(u) D_n(u) \,du = \frac{\pi}{2} g(0^+), \label{LemaFourier2}
-\end{equation}
-
-donde $D_n(u)$ está definido por la ecuación \eqref{DirichletKernel}.
-\end{lema}
-
-\begin{demo}
-Primero, escribamos 
-\begin{equation}
-    \int_0^{\pi} g(u) D_n(u) \,du = I_n + J_n, \label{LemaFourier3}
-\end{equation}
-
-donde 
-$$I_n = \int_0^{\pi} [g(u) - g(0^+)] D_n(u) \,du ~~\mbox{y}~~ J_n = \int_0^{\pi} g(0^+) D_n(u) \,du.$$
-
-Usando la expresión \eqref{DirichletKernel2}, la primera de estas dos integrales puede escribirse como 
-\begin{equation}
-   I_n = \int_0^{\pi} \frac{g(u) - g(0^+)}{2 \sin(u/2)} \sin [(n+1/2)u] \,du. \label{LemaFourier4}
-\end{equation}
-
-Observe que la función
-$$G(u) =  \frac{g(u) - g(0^+)}{2 \sin(u/2)}$$
-
-es el cociente de dos funciones seccionalmente continuas en el intervalo $0 < u <\pi$. Aunque el denominador se anule en $u = 0$, la existencia de g$g'(0^+)$ nos asegura la existencia de $G(0^+)$. En efecto,
-$$\lim_{u \to 0^+} G(u) = \left( \lim_{u \to 0^+} \frac{g(u) - g(0^+)}{u-0} \right) \cancelto{1}{\left(\lim_{u \to 0^+} \frac{u/2}{\sin(u/2)}\right)}= g'(0^+).$$
-
-Así $G(u)$ es seccionalmente continua en el intervalo $0<u<\pi$. Aplicando el lema \ref{lema1}, concluímos que
-$$\lim_{n \to + \infty} I_n = 0.$$
-
-Por otro lado, de la propiedad \eqref{DirichletKernel1} del núcleo de Dirichlet, tenemos que 
-$$J_n = \frac{\pi}{2} g(0^+) ~\Rightarrow~ \lim_{n \to + \infty}J_n = \frac{\pi}{2} g(0^+).$$
-
-Por lo tanto, tomando el límite cuando $n \to \infty$ en \eqref{LemaFourier3}:
-$$\lim_{n \to + \infty}  \int_0^{\pi} g(u) D_n(u) \,du = \lim_{n \to + \infty} [I_n + J_n] = \frac{\pi}{2} g(0^+).$$
-\end{demo}
-
-\begin{teorema}[Convergencia puntual de la serie de Fourier] 
-Sea $f(t)$ una función real seccionalmente continua en el intervalo $-\pi < t < \pi$. Su serie de Fourier trigonométrica converge al valor medio
-\vspace{-0.05cm}
-$$\frac{f(t^+) + f(t^-)}{2}$$
-
-para cada $t \in (-\pi,\pi)$ donde ambas derivadas laterales $f'(t^+)$ y $f'(t^-)$ existen.
-\end{teorema}
-
-\begin{demo}
-La $n$-ésima suma parcial de la serie de Fourier está dada por
-\begin{align*}
-    s_n(t) &= \frac{a_0}{2} + \sum_{k=1}^n (a_k \cos(kt) + b_k \sin(kt)) \\
-    &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) \,dx + \frac{1}{\pi} \sum_{k=1}^n \left[ \int_{-\pi}^{\pi} f(x) \cos(k x) \,dx \cdot \cos(kt) + \int_{-\pi}^{\pi} f(x) \sin(k x) \,dx \cdot \sin(kt)\right] \\
-    &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \left[\frac{1}{2} + \sum_{k=1}^n (\cos(kx) \cos(kt) + \sin(kx) \sin(kt)) \right] \,dx \\
-    &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \left[ \frac{1}{2} + \sum_{k=1}^n \cos[k(x-t)] \right] \,dx.
-\end{align*}
-
-Usando la expresión del núcleo de Dirichlet dada por \eqref{DirichletKernel}:
-$$s_n(t) = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) D_n(x-t) \,dx.$$
-
-Haciendo la extensión periódica de $f$ a todo $\mathbb{R}$, 
-$$f(x + 2\pi) = f(x), \quad \forall x \in \mathbb{R},$$
-
- resulta
- \begin{equation}
-    s_n(t) = \frac{1}{\pi} \int_{t-\pi}^{t + \pi} f(x) D_n(x-t) \,dx,\label{Lema2.1}
- \end{equation}
- 
-donde el punto $t$ está en el centro del intervalo que escogimos. Ahora se sigue de la ecuación  \eqref{Lema2.1} que
-\begin{equation}
-  s_n(t) = \frac{1}{\pi} [I_n(t) + J_n(t)] \label{Lema2.2} 
-\end{equation}
-
-donde  
-\begin{align}
-    I_n(t) &= \int_{t}^{t+\pi} f(x) D_n(x-t) \,dx, \label{Lema2.3} \\
-    J_n(t) &= \int_{t-\pi}^t f(x) D_n(x-t) \,dx. \label{Lema2.4} 
-\end{align}
-
-Haciendo el cambio de variable $u = x-t ~\Rightarrow~ du = dx $ en la integral \eqref{Lema2.3}, se obtiene
-\begin{equation}
-    I_n(t) = \int_{0}^{\pi} f(t+u) D_n(u) \,du.\label{Lema2.5} 
-\end{equation}
-
-Del hecho que $f$ sea seccionalmente continua en $(-\pi,\pi)$ y periódica (por la extensión hecha), ésta es seccionalmente continua en cualquier intervalo cerrado del eje $t$. Así que, para un valor arreglado de $t$, la función $g(u) = f(t+u)$ en \eqref{Lema2.5} es seccionalmente continua en cualquier intervalo cerrado del eje $u$, en particular $0<u<\pi$. Supongamos que que $f'(t^+)$ existe. Después de observar que
-$$g(0^+) = \lim_{u \to 0^+} g(u) = \lim_{u \to 0^+} f(t+u) \overset{\textcolor{blue}{v = t+u}}{=} \lim_{v \to t^+} f(v) = f(t^+),$$
-
-podemos mostrar que la derivada a la derecha de $g$ en  $u = 0$ existe:
-\begin{equation*}
-    g'(0^+) = \lim_{u \to 0^+} \frac{g(u) - g(0^+)}{u-0} = \lim_{u \to 0^+} \frac{f(t+u) - f(t^+)}{u} = f'(t^+).
-\end{equation*}
-
-De acuerdo al lema \ref{lema2}, tenemos que 
-\begin{equation}
-\lim_{n \to + \infty} I_n(t) = \frac{\pi}{2} g(0^+) = \frac{\pi}{2} f(t^+).    \label{Lema2.6}
-\end{equation}
-
-Por otro lado, haciendo la sustitución $u = t-x ~\Rightarrow~ du = -dx$ en la integral \eqref{Lema2.4} y recordando que $D_n(u)$ es par, obtenemos que
-\begin{equation}
-    J_n(t) = \int_0^{\pi} f(t-u) D_n(u) \,du. \label{Lema2.7}
-\end{equation}
-
-Ahora, asumimos que la derivada por la izquierda $f'(t^-)$ existe, y notemos que la función $g(u) = f(t-u)$ en la expresión \eqref{Lema2.7} es seccionalmente continua en el intervalo $0<u<\pi$. Más aún, 
-$$g(0^+) = \lim_{u \to 0^+} g(u) = \lim_{u \to 0^+} f(t - u) = \lim_{v \to t^-} f(v) = f(t^-)$$
-
-y
-\begin{align*}
-g'(0^+) = \lim_{u \to 0^+} \frac{g(u) - g(0^+)}{u-0} &= \lim_{u \to 0^+} \frac{f(t-u) - f(t^-)}{u} \\
-&=   - \lim_{h \to 0^-} \frac{f(t+h) - f(t^-)}{h} \quad \textcolor{blue}{(h = -u)}\\
-&= -f'(t^-).   
-\end{align*}
-
-Así que una vez más, por el lema \ref{lema2}, 
-\begin{equation}
-\lim_{n \to + \infty} J_n(t) = \frac{\pi}{2} g(0^+) = \frac{\pi}{2} f(t^-).    \label{Lema2.8}
-\end{equation}
-
-Finalmente, concluimos a partir de la ecuación \eqref{Lema2.2} y los límites \eqref{Lema2.6} y \eqref{Lema2.8} que 
-$$\lim_{n \to + \infty} s_n(t) = \frac{f(t^+) + f(t^-)}{2}, \quad t \in (-\pi,\pi)$$
-
-demostrando así el teorema.
-\end{demo}
-
-\subsection*{Convergencia uniforme}
-
-\begin{teorema}[Convergencia uniforme] 
-Supóngase que $f$ es continua en $[-\pi,\pi]$, $f(-\pi) = f(\pi)$ y que $f'$ es continua por tramos, con discontinuidades de salto. Entonces la serie de Fourier trigonométrica de $f$ converge a $f$ absolutamente y uniformemente.
-\end{teorema}
-
-
-\begin{demo}
-Por el teorema \ref{Puntual}, podemos escribir
-$$f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty}(a_n \cos(nt) + b_n \sin(nt)), \quad t \in [-\pi,\pi].$$
-
-Los coeficientes de Fourier de $f'$ son 
-$$\alpha_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f'(t) \cos(nt) \,dt, \quad \beta_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f'(t) \sin(nt) \,dt.$$
-
-Luego,
-$$\alpha_n = \left. \frac{1}{\pi} f(t) \cos(nt) \right|_{-\pi}^{\pi} + \frac{n}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt = n b_n, $$
-
-ya que podemos integrar por partes y $f(\pi) = f(-\pi)$. Análogamente, $\beta_n = - na_n$.
-
-Por lo tanto, 
-$$a_n = - \frac{\beta_n}{n}, ~~ b_n = \frac{\alpha_n}{n}, \quad n = 1,2, \dots$$
-
-Sabemos que $\sum\limits_{n=1}^{\infty} \beta_n^2$ converge por la desigualdad de Bessel para $f'$. Sea $s_n = \sum\limits_{k=1}^n |a_k|$,
-$$s_n = \sum_{k=1}^n \frac{|\beta_k|}{k}  \leq \left\{ \left( \sum_{k=1}^n  \beta^2_k \right) \left(\sum_{k=1}^n \frac{1}{k^2} \right) \right\}^{1/2} \leq \left\{ \left( \sum_{k=1}^{\infty}  \beta^2_k \right) \left(\sum_{k=1}^{\infty}  \frac{1}{k^2} \right) \right\}^{1/2}  $$
-
-por la desigualdad de Cauchy-Schwarz para $\mathbb{R}^n$. 
-
-Como $s_n$ es una sucesión de términos no negativos y está acotada, la serie
-\begin{equation}
-    \sum_{n=1}^{\infty} |a_n| < \infty. \label{uniforme1}
-\end{equation}
-
-De manera similar se prueba que 
-\begin{equation}
-    \sum_{n=1}^{\infty} |b_n| < \infty. \label{uniforme2}
-\end{equation}
-
-Como $\alpha_n, \beta_n \to 0$ (consecuencia de la desigualdad de Bessel), también tenemos que  
-$$\lim_{n \to \infty} n a_n = \lim_{n \to \infty} n b_n = 0.$$
-
-Ahora solo basta mostrar que 
-$$\frac{a_0}{2} + \sum_{n=1}^{\infty}(a_n \cos(nt) + b_n \sin(nt))$$
-
-converge uniformemente, ya que el límite debe ser $f(t)$. A su vez, basta mostrar que 
-$$\sum_{n=1}^{\infty} (a_n \cos(nt) + b_n \sin(nt))$$
-
-es uniformemente convergente. Pero,
-$$|a_n \cos(nt) + b_n \sin(nt)| \leq |a_n| + |b_n| = M_n,$$
-
-y entonces, por \eqref{uniforme1} y \eqref{uniforme2}, la serie de términos no negativos $\sum\limits_{n=1}^{\infty} M_n$ converge.
-
-Por lo tanto, por el criterio de M de Weierstrass, la serie converge uniforme y absolutamente.
-
-\end{demo}
-
-\subsection*{Diferenciación e integración}
-
-\begin{teorema}[Integración]
-Sea $f$ una función seccionalmente continua en el intervalo $-\pi < t < \pi$. Independiente si la serie \eqref{FourierTrigo} converge, la siguiente ecuación es válida cuando $-\pi \leq t \leq \pi$:
-\begin{equation}
-  \int_{-\pi}^t f(s) \,ds = \frac{a_0}{2} (t + \pi) + \sum_{n=1}^{\infty} \frac{1}{n} \left\{ a_n \sin(nt) - b_n[\cos(nt) + (-1)^{n+1}] \right\}.    \label{Integral}
-\end{equation}
-\end{teorema}
-
-\begin{demo}
-Nuestra demostración comienza con el hecho que, como $f$ es seccionalmente continua, la función
-\begin{equation}
-  F(t) = \int_{-\pi}^t f(s) \,ds - \frac{a_0}{2} t, \quad t \in [-\pi,\pi] \label{Integral1}
-\end{equation}
-
-es continua. Más aún, 
-$$F'(t) = f(t) - \frac{a_0}{2}, \qquad - \pi < t <\pi, $$
-
-excepto en los puntos donde $f$ es discontinua. Así, $F'$ es seccionalmente continua en el intervalo $(-\pi,\pi)$. Por lo tanto, $F$ tiene derivada seccionalmente continua (existen $F'(t^+)$ y $F'(t^-)$), entonces se sigue del teorema \eqref{Puntual} que
-\begin{equation}
-    F(t) = \frac{A_0}{2} + \sum_{n=1}^{\infty} (A_n \cos(nt) + B_n \sin(nt)), \quad t \in (-\pi,\pi), \label{Integral2}
-\end{equation}
-
-donde 
-\begin{equation}
-    A_n =  \frac{1}{\pi} \int_{-\pi}^{\pi} F(t) \cos(nt) \,dt, \quad B_n = \frac{1}{\pi} \int_{-\pi}^{\pi} F(t) \sin(nt) \,dt.\label{Integral3}
-\end{equation}
-
-Notemos de la expresión \eqref{Integral1} que 
-$$F(\pi) = \int_{-\pi}^{\pi} f(s) \,ds - \frac{a_0}{2} \pi = a_0 \pi - \frac{a_0}{2}\pi = \frac{a_0}{2}\pi$$
-
-y $F(-\pi) = \frac{a_0}{2}\pi$, luego $F(\pi) = F(- \pi)$. Ésto nos muestra que la representación \eqref{Integral2} es también valida en los extremos del intervalo $(-\pi,\pi)$ y, por lo tanto, en cada punto $x \in [-\pi,\pi]$.
-
-Escribamos ahora los coeficientes $A_n$ y $B_n$ en términos de $a_n$ y $b_n$. Cuando $n \geq 1$, podemos integrar por partes las integrales \eqref{Integral3}, usando el hecho de que $F$ es continua y $F'$ seccionalmente continua. Entonces,
-\begin{align*}
-    A_n &= \frac{1}{n\pi} \cancelto{0}{[F(t) \sin(nt)]_{-\pi}^{\pi}} - \frac{1}{n\pi} \int_{-\pi}^{\pi} F'(t) \sin(nt) \,dt \\
-    &=  - \frac{1}{n\pi} \int_{-\pi}^{\pi} \left[ f(t) - \frac{a_0}{2} \right] \sin(nt) \,dt \\
-    &= - \frac{1}{n\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt + \frac{a_0}{2n\pi} \int_{-\pi}^{\pi} \sin(nt) \,dt \\
-    &= - \frac{b_n}{n} + \frac{a_0}{2n\pi} \cancelto{0}{\left[ -\frac{1}{n} \cos(nt)\right]_{-\pi}^{\pi} } = - \frac{b_n}{n}.
-\end{align*}
-
-Similarmente, $B_n = a_n/n$. Con respecto a $A_0$, sabemos que $F(\pi) = \frac{a_0}{2}\pi$ y que la representación \eqref{Integral2} es también válida cuando $x = \pi$. Así que, evaluando $t = \pi$ en la representación y luego resolviendo para $A_0$, vemos que
-$$A_0 = a_0 \pi - 2 \sum_{n=1}^{\infty} (-1)^n A_n = a_0 \pi - 2 \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} b_n.$$
-
-A partir del desarrollo de la demostración del teorema \ref{C.Uniforme}, probamos que 
-$$\sum_{n=1}^{\infty} |(-1)^n A_n| = \sum_{n=1}^{\infty} |A_n| < \infty ~\Rightarrow~ \sum_{n=1}^{\infty} (-1)^n A_n < \infty.$$
-
-Con las expresiones para $A_n$ y $B_n$, incluyendo la expresión en serie de $A_0$, la serie \eqref{Integral2} toma la forma 
-$$F(t) = \frac{a_0}{2}\pi + \sum_{n=1}^{\infty} \frac{1}{n} \left\{ a_n \sin(nt) - b_n [\cos(nt) + (-1)^{n+1}] \right\}.$$
-
-Finalmente, si sustituimos este resultado en  \eqref{Integral1}, llegamos al resultado deseado \eqref{Integral}.
-\end{demo}
-
-\begin{teorema}[Derivación]
-Sea $f$ una función continua en $[-\pi,\pi]$, donde $f(-\pi) = f(\pi)$, y $f'$ es seccionalmente continua en el intervalo $(-\pi,\pi)$. Entonces, la serie de Fourier
-\begin{equation}
-    f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} (a_n \cos(nt) + b_n \sin (nt) ), \quad t \in [-\pi,\pi], \label{Derivada1}
-\end{equation}
-
-donde 
-$$a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos(nt) \,dt, \quad b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin(nt) \,dt,$$
-
-es derivable para todo $x \in (-\pi,\pi)$ en el cual $f''(t)$ existe:
-\begin{equation}
-    f'(t) = \sum_{n=1}^{\infty} ( - n a_n \sin(nt) + nb_n \cos(nt)).\label{Derivada2}
-\end{equation}
-\end{teorema}
-
-\begin{demo}
-Sea $t \in (-\pi,\pi)$ un punto el cual $f''$ existe, luego $f'$ es continua en $t$. Así, aplicando el teorema \ref{Puntual} a la función $f'$, 
-\begin{equation}
-    f'(t) = \frac{\alpha_0}{2} + \sum_{n=1}^{\infty} (\alpha_n \cos(nt) + \beta_n \sin(nt)), \label{Derivada3}
-\end{equation}
-
-donde 
-$$\alpha_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f'(t) \cos(nt) \,dt, \quad \beta_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f'(t) \sin(nt) \,dt.$$
-
-Sin embargo, $f$ y $f'$ satisfacen las condiciones del teorema \eqref{C.Uniforme}, luego sabemos a partir de la demostración hecha que 
-\begin{equation*}
-    \alpha_0 = 0, \quad \alpha_n = n b_n, \quad \beta_n = - na_n; \quad n = 1,2,\dots 
-\end{equation*}
-
-Cuando estas sustituciones son hechas, la ecuación \eqref{Derivada3} toma la forma de \eqref{Derivada2}; y la demostración está completa.
-\end{demo}

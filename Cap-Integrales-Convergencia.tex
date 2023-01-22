@@ -1,0 +1,419 @@
+\chapter{Integrales y convergencia*}
+
+En este capítulo se estudiarán las funciones definidas mediante integrales propias,
+$$F(x) = \int_c^d f(x,t)\,dt,$$
+
+e integrales impropias,
+$$F(x) = \int_c^{\infty} f(x,t) \,dt.$$
+
+Este tipo de funciones están presentes, por ejemplo, al determinar una transformada de una función, tales como: la transformada de Laplace, la transformada de Fourier, etc.
+
+\section{Funciones definidas por una integral propia}
+
+Sea $f: R \rightarrow \mathbb{R}$ una función continua en el rectángulo $R = [a,b] \times [c,d] $. Definamos la función $F: [a,b] \rightarrow \mathbb{R}$,
+\begin{equation}
+F(x) = \int_c^d f(x,t) \,dt.  \label{Funcion-Integral-Propia}
+\end{equation}
+
+¿Qué propiedades tiene esta función?¿Será continua, derivable y/o integrable?
+
+\begin{teorema}
+    Sea la función $f(x,t)$ continua en el rectángulo $R = \{(x,t) \in \mathbb{R}^2 : a \leq x \leq b, c \leq t \leq d\}$. Entonces, la función
+    $$F(x) = \int_c^d f(x,t)\,dt$$
+
+    es continua para $x \in [a,b]$.
+\end{teorema}
+
+\textbf{Observación:} Otra forma equivalente de escribir la conclusión del teorema es
+\begin{shaded}
+$$\lim_{x\to x_0} \int_c^d f(x,t)\,dt = \int_c^d \lim_{x\to x_0} f(x,t) \,dt.$$
+\end{shaded}
+
+para $x_0 \in [a,b]$. 
+
+Como $F(x)$ es continua en $[a,b]$, ésta es integrable en dicho intervalo. Además, por el teorema de Fubini,
+\begin{shaded}
+$$\int_a^b \left(\int_c^d f(x,t) \,dt \right) \,dx = \int_c^d \left(\int_a^b f(x,t) \,dx \right) \,dt.$$
+\end{shaded}
+
+\begin{teorema}[Regla de Leibniz]
+    Sea la función $f(x,t)$ con derivada $\partial f/\partial x$, ambas continuas en el rectángulo $R = \{(x,t) \in \mathbb{R}^2 : a \leq x \leq b, c \leq t \leq d\}$. Entonces, 
+    $$\frac{d}{dx} \int_c^d f(x,t) \,dt = \int_c^d \frac{\partial f}{\partial x}(x,t) \,dt, \quad a < x < b.$$
+\end{teorema}
+
+Para un caso más general, se tiene el siguiente teorema.
+
+\begin{teorema}[Regla de Leibniz generalizada]
+    Sea la función $f(x,t)$ con derivada $\partial f/\partial x$, ambas continuas en el rectángulo $R = \{(x,t) \in \mathbb{R}^2 : a \leq x \leq b, c \leq t \leq d\}$ y $u(x), v(x)$ funciones con primera derivada continua en $I = \{x : a \leq x\leq b\}$ con recorrido en $J = \{t: c \leq t \leq d\}$. Entonces, 
+    $$\frac{d}{dx} \int_{u(x)}^{v(x)} f(x,t) \,dt = f(x,v(x)) v'(x) - f(x,u(x)) u'(x) + \int_{u(x)}^{v(x)} \frac{\partial f}{\partial x}(x,t) \,dt.$$
+\end{teorema}
+
+\begin{demo}
+    Sea
+    $$F(x) =  \int_{u(x)}^{v(x)} f(x,t) \,dt.$$
+
+    Notemos que
+    $$F(x) = G(x,u(x),v(x)).$$
+
+    Entonces, por la regla de la cadena,
+    $$F'(x) = \frac{\partial G}{\partial x} + \frac{\partial G}{\partial u} u'(x) + \frac{\partial G}{\partial v}v'(x).$$
+
+    Usando la regla de Leibniz, 
+    $$\frac{\partial G}{\partial x} = \frac{d}{dx}\int_u^v f(x,t) \,dt = \int_u^v \frac{\partial f}{\partial x}(x,t)\,dt.$$
+
+    y, por el Teorema Fundamental del Cálculo,
+    \begin{align*}
+      \frac{\partial G}{\partial u} &= \frac{\partial}{\partial u} \int_u^v f(x,t) \,dt = - f(x,u(x)), \\
+      \frac{\partial G}{\partial v} &= \frac{\partial}{\partial v} \int_u^v f(x,t) \,dt = f(x,v(x)).
+    \end{align*}
+
+    Por lo tanto,
+    $$F'(x) = f(x,v(x)) v'(x) - f(x,u(x)) u'(x) + \int_{u(x)}^{v(x)} \frac{\partial f}{\partial x}(x,t) \,dt.$$
+\end{demo}
+
+\begin{ejemplo}
+    Determinemos la integral Gaussiana
+    $$\int_0^{\infty} e^{-x^2} \,dx,$$
+
+    usando la regla de Leibniz. 
+
+    Para $x > 0$, definamos
+    $$F(x) = \left( \int_0^x e^{-t^2} \,dt \right)^2.$$
+
+    Derivando $F(x)$ con respecto a $x$ y usando el Teorema Fundamental del Cálculo, obtenemos 
+    $$F'(x) = \left(2 \int_0^x e^{-t^2} \,dx \right) \cdot e^{-x^2} = 2 e^{-x^2} \int_0^x e^{-t^2} \,dt.$$
+
+    Haciendo el cambio de variable $t = xy \Rightarrow dt = x dy$, 
+    $$F'(x) = 2 e^{-x^2} \int_0^1 x e^{-x^2y^2} \,dy = \int_0^1 2 x e^{-(1+y^2)x^2} \,dy.$$
+
+    Pero,
+    $$2 x e^{-(1+y^2)x^2} = - \frac{\partial}{\partial x}\left[ \frac{e^{-(1+y^2)x^2}}{1+y^2} \right].$$
+
+    Entonces, usando el hecho de que los integrandos son todos continuos (la función y su derivada), podemos usar la regla de Leibniz para así obtener
+    $$F'(x) = \int_0^1 - \frac{\partial}{\partial x}\left[ \frac{e^{-(1+y^2)x^2}}{1+y^2} \right] \,dy = - \frac{d}{dx} \int_0^1  \frac{e^{-(1+y^2)x^2}}{1+y^2} \,dy.$$
+
+    Sea
+    $$G(x) =\int_0^1  \frac{e^{-(1+y^2)x^2}}{1+y^2} \,dy,$$
+
+    tenemos que $F'(x) = - G'(x)$ para toda $x > 0$. Integrando,
+    \begin{equation}
+        F(x) = - G(x) + C, \quad x > 0. \label{EjLeibniz1}
+    \end{equation}
+
+    Para encontrar $C$, tomemos $x \to 0^+$ en \eqref{EjLeibniz1}. El lado derecho tiende a
+    $$\left( \int_0^0 e^{-x^2} \,dx\right) = 0$$
+
+    y el lado izquierdo a
+    \begin{align*}
+       \lim_{x \to 0^+} \left[ - \int_0^1  \frac{e^{-(1+y^2)x^2}}{1+y^2} \,dy + C\right] &= - \int_0^1 \left(\lim_{x \to 0^+} \frac{e^{-(1+y^2)x^2}}{1+y^2}   \right) \,dy + C \\
+       &= - \int_0^1 \frac{1}{1+y^2} \,dy + C \\
+       &= \left. - \arctan(y) \right|_0^1 + C\\
+       &= - \frac{\pi}{4} + C.
+    \end{align*}
+
+    Entonces, $C = \pi/4$. Reemplazando en \eqref{EjLeibniz1},
+    $$\left( \int_0^x e^{-t^2} \,dt \right)^2 = \frac{\pi}{4}- \int_0^1  \frac{e^{-(1+y^2)x^2}}{1+y^2} \,dy .$$
+    
+    Si tomamos el límite cuando $x \to \infty$, obtenemos el cuadrado de la integral a evaluar, quedando estudiar el comportamiento de $G(x)$ para ese límite. 
+
+    Recordemos que $e^{-\alpha}  \leq 1$ si $\alpha \geq 0$. Luego,
+    $$\left|\frac{e^{-(1+y^2)x^2}}{1+y^2}\right| = \frac{e^{-x^2} e^{-y^2 x^2}}{1+y^2} \leq \frac{e^{-x^2}}{1+y^2}.$$
+
+    Integrando con respecto a $y$ para $y \in [0,1]$, obtenemos la siguiente desigualdad.
+    $$\left|\int_0^1 \frac{e^{-(1+y^2)x^2}}{1+y^2}  \,dy\right| \leq e^{-x^2} \int_0^1 \frac{1}{1+y^2} \,dy = \frac{\pi}{4} e^{-x^2} \overset{x \to \infty}{\longrightarrow} 0.$$
+
+    Por el teorema del acotamiento, 
+    $$\lim_{x \to + \infty} \int_0^1 \frac{e^{-(1+y^2)x^2}}{1+y^2}  \,dy = 0.$$
+
+    Por lo tanto,
+    $$\left(\int_0^{\infty} e^{-t^2} \,dt\right)^2 = \frac{\pi}{4} \Rightarrow \int_0^{\infty} e^{-t^2} \,dt = \frac{\sqrt{\pi}}{2}.$$
+\end{ejemplo}
+
+
+\section{Funciones definidas por una integral impropia}
+
+A diferencia de las funciones definidas por integrales propias, las integrales impropias involucran un límite y al estar trabajando con funciones $f(x,t)$ de dos variables, podemos distinguir dos convergencias: la puntual y la uniforme. Similarmente que para el caso de sucesiones de funciones, la convergencia uniforme es una condición importante para garantizar, por ejemplo, el intercambio de la derivada y la integral.
+
+\subsection{Convergencia uniforme de la integral}
+
+\begin{defi}
+    Sea $f(x,t)$ una función continua en $R = [a,b] \times [c, \infty[$. Supongamos que la integral
+    $$F(x) = \int_c^{\infty} f(x,t) \,dt = \lim_{d\to + \infty} \int_c^d f(x,t) \,dt$$
+
+    converge para cada $x \in [a,b]$ (convergencia puntual). 
+    
+    Se dice que la integral 
+    $$F(x) = \int_c^{\infty} f(x,t) \,dt$$
+
+    \textbf{converge uniformemente} en el intervalo $a \leq x \leq b$ siempre que para cualquier $\varepsilon > 0$, $\exists N = N(\varepsilon) > c$ (que no dependa de $x$) tal que
+    $$\left| F(x) - \int_c^d f(x,t) \,dt \right| < \varepsilon$$
+
+    siempre que $d \geq N$, $\forall x \in [a,b]$.
+\end{defi}
+
+\begin{teorema}[Criterio de Cauchy] \label{IntegralCauchy}
+    La integral 
+ $$\int_c^{\infty} f(x,t) \,dt$$
+
+ converge uniformemente en $[a,b]$ si y sólo si dado $\varepsilon > 0$, $\exists N = N(\varepsilon)$ tal que
+ $$\left| \int_{d_1}^{d_2} f(x,t) \,dt\right| < \varepsilon, \quad \forall d_1,d_2 \geq N.$$
+\end{teorema}
+
+Para testear la convergencia uniforme de series de funciones, podemos apoyarnos del criterio de M de Weierstras. Para el caso de funciones definidas por una integral impropia, tenemos un criterio similar.
+
+\begin{teorema}[Test de convergencia uniforme] \label{TestCV-Uniforme}
+ Sea $f(x,t)$ una función continua en $R = [a,b] \times [c, \infty[$. Si 
+ $$\forall x \in [a,b]: ~ |f(x,t)| \leq g(t) ~\wedge~ \int_c^{\infty} g(t) \,dt < \infty.$$
+
+ Entonces, la integral 
+ $$\int_c^{\infty} f(x,t) \,dt$$
+
+ converge uniformemente en el intervalo $a \leq x \leq b$.
+\end{teorema}
+
+\begin{ejemplo}
+    Muestre que la integral impropia
+    \begin{equation}
+      \int_1^{\infty} \frac{\sin(t)}{x^2+t^2} \,dt  \label{EjIntregal-Uniforme}
+    \end{equation}
+
+    converge uniformemente para $- \infty < x < \infty$.
+
+    \textbf{Solución:} Para todo $x \in \mathbb{R}$ y $t \geq 1$, tenemos que
+    $$\left| \frac{\sin(t)}{x^2+t^2} \right| \leq \frac{1}{x^2+t^2} \leq \frac{1}{t^2}.$$
+
+    Como $\int_1^{+\infty} (1/t^2) \,dt$ converge, por el teorema \eqref{TestCV-Uniforme}, concluimos que la integral \eqref{EjIntregal-Uniforme} converge uniformemente para todo $x \in \mathbb{R}$.
+\end{ejemplo}
+
+\subsection{Continuidad y derivabilidad}
+
+\begin{teorema} \label{TeoA:Continuidad}
+    Sea $f(x,t)$ continua en $R = [a, b] \times [c, \infty[$. Si la integral impropia 
+    $$F(x) = \int_c^{\infty} f(x,t) \,dt$$
+
+    converge uniformemente, entonces $F(x)$ es continua en $[a,b]$.
+\end{teorema}
+
+    \textbf{Observación:} Otra forma equivalente de escribir la conclusión del teorema es
+ \begin{shaded}
+    $$\lim_{x\to x_0} \int_c^{\infty} f(x,t)\,dt = \int_c^{\infty} \lim_{x\to x_0} f(x,t) \,dt.$$
+\end{shaded}
+
+para $x_0 \in [a,b]$.
+
+\begin{teorema}
+    Sean $f(x,t)$ y $\partial f/\partial x$ continuas en $[a, b] \times [c, \infty[$. Si la integral impropia
+    $$\int_c^{\infty} \frac{\partial f}{\partial x}(x,t) \,dt$$
+
+    convergen uniformemente para $x \in [a,b]$, entonces 
+    $$\frac{d}{dx} \int_c^{\infty} f(x,t) \,dt = \int_c^{\infty} \frac{\partial f}{\partial x}(x,t) \,dt.$$
+\end{teorema}
+
+\begin{ejemplo}
+    Evaluemos la integral de Dirichlet
+    $$\int_0^{\infty} \frac{\sin(x)}{x} \,dx.$$
+
+    Para ello, consideremos la integral
+    \begin{equation}
+        I(\alpha) = \int_0^{+\infty} f(x,\alpha) \,dx, \quad \alpha > 0, \label{Ej2-Derivada-Integral1}
+    \end{equation}
+
+    donde 
+    $$f(x,\alpha) = \left\{ \begin{array}{cl}
+     e^{-\alpha x} \frac{\sin(x)}{x},& x \neq 0  \\
+     1,& x = 0
+\end{array} \right.,$$
+
+claramente continua en $\mathbb{R}^2$, pues para $\alpha_0 \in \mathbb{R}$,
+$$\lim_{(x,\alpha) \to (0,\alpha_0)} f(x,\alpha) = \lim_{(x,\alpha) \to (0,\alpha_0)} \left[  e^{-\alpha x} \cdot \frac{\sin(x)}{x} \right] = 1.$$
+
+Derivando con respecto a $\alpha$,
+$$\frac{\partial f}{\partial \alpha} = - e^{-\alpha x} \sin(x), \quad x \neq 0.$$
+
+Para $x = 0$ y $\alpha = \alpha_0 \in \mathbb{R}$ arbitrario, tenemos que
+$$\frac{\partial f}{\partial \alpha}(0,\alpha_0) = \lim_{h\to 0} \frac{f(0,\alpha_0 + h) - f(0,\alpha_0)}{h} = 0.$$
+
+Por lo tanto,
+$$\forall (x,\alpha) \in \mathbb{R}^2: ~ \frac{\partial f}{\partial \alpha} = - e^{-\alpha x} \sin(x),$$
+
+la cual es claro que es continua. 
+
+Analicemos ahora la convergencia uniforme de la integral de $\frac{\partial f}{\partial \alpha}$ con respecto a $x$.
+
+Notemos que
+$$\left| \frac{\partial f}{\partial \alpha}(x,\alpha) \right| = \left|  - e^{-\alpha x} \sin(x)\right| \leq e^{-\alpha x} \leq e^{-\delta x},$$
+
+para $\alpha \geq \delta > 0$. Dado que
+$$\int_{0}^{\infty} e^{-\delta x} dx = \left. - \frac{e^{-\delta x}}{\delta} \right|_{0}^{\infty} = \frac{1}{\delta},$$
+
+la integral 
+$$\int_{0}^{\infty} \frac{\partial f}{\partial \alpha}(x,\alpha) \,dx$$
+
+converge uniformemente para $\alpha \in [\delta, \infty[$.
+
+Entonces,
+$$I'(\alpha) =  \int_{0}^{\infty} \frac{\partial f}{\partial \alpha}(x,\alpha) \,dx = - \int_0^{\infty} e^{-\alpha x} \sin(x) \,dx = - \frac{1}{1+ \alpha^2}.$$
+
+Integrando con respecto a $\alpha$, tenemos que
+$$I(\alpha) = - \arctan(\alpha) + C, \quad \alpha > 0.$$
+
+Como
+$$|I(\alpha)| = \left| \int_0^{\infty} f(x,\alpha) \,dx \right| \leq \int_0^{\infty} e^{-\alpha x} \,dx = \frac{1}{\alpha},$$
+
+por el teorema del acotamiento, 
+$$\lim_{\alpha \to \infty} \frac{1}{\alpha} = 0 \Rightarrow \lim_{\alpha \to \infty} I(\alpha) = 0.$$
+
+Pero,
+$$\lim_{\alpha \to \infty} I(\alpha) = \lim_{\alpha \to \infty} [- \arctan(\alpha) + C] = - \frac{\pi}{2} + C.$$
+
+Entonces,
+$$-\frac{\pi}{2} + C = 0 \Rightarrow C = \frac{\pi}{2}.$$
+
+Así,
+$$I(\alpha) = - \arctan(\alpha) + \frac{\pi}{2}, \quad \alpha > 0.$$
+
+Tomando el límite cuando $\alpha \to 0^+$,
+$$\lim_{\alpha \to 0^+} I(\alpha) = \lim_{\alpha \to 0^+} \left[-\arctan(\alpha) + \frac{\pi}{2} \right] = \frac{\pi}{2}.$$
+
+Si suponemos
+$$\lim_{\alpha \to 0^+}I(\alpha) = I(0),$$
+
+podemos concluir que 
+$$\int_0^{\infty} \frac{\sin(x)}{x} \,dx = \frac{\pi}{2}.$$
+
+De acuerdo al teorema \eqref{TeoA:Continuidad}, el supuesto es cierto si la integral $\int_0^{\infty} f(x,\alpha) \,dx$ converge uniformemente para $\alpha \geq 0$. No podemos usar el teorema \ref{TestCV-Uniforme}, pues, al igual que el caso de $\frac{\partial f}{\partial \alpha}$, no nos garantiza la convergencia uniforme en $\alpha = 0$. Procedemos entonces por definición, pero antes integremos por partes $I(\alpha)$ para mejorar la convergencia.
+\begin{align*}
+\int_{d}^{\infty} e^{-\alpha x} \frac{\sin(x)}{x} \,dx &= \left. - \frac{e^{-\alpha x}}{x} \cos(x) \right|_{x = d}^{x = \infty} - \int_d^{\infty} \frac{(1+x\alpha) e^{-\alpha x}}{x^2} \cos(x) \,dx, \quad d > 0 \\
+&= \frac{e^{-\alpha d}}{d} \cos(d) - \int_d^{\infty} \frac{(1+x\alpha) e^{-\alpha x}}{x^2} \cos(x) \,dx, \quad d > 0.
+\end{align*}
+
+Acotemos la segunda integral. Pero antes, notemos que $|(1+x\alpha) e^{-\alpha x}| \leq 1$, independiente del valor de $x$ y $\alpha \geq 0$. En efecto, al derivar la función, considerando $\alpha$ como una constante,
+$$\frac{d}{d\alpha} \left[ (1+x\alpha) e^{-\alpha x} \right] = - \alpha^2 x e^{-\alpha x}.$$
+
+Como la derivada es positiva para $x < 0$ y negativa para $x > 0$, la función crece desde los $x$ negativos hasta llegar al $x = 0$, para luego decrecer en todos los $x$ positivos. Por tanto, en $x = 0$ se alcanza el máximo $(1+x\alpha) e^{-\alpha x} |_{x = 0} = 1$.
+
+Entonces,
+$$\left|\frac{(1+x\alpha) e^{-\alpha x}}{x^2} \cos(x) \right| \leq \frac{1}{x^2} \Rightarrow \left| \int_d^{\infty} \frac{(1+x\alpha) e^{-\alpha x}}{x^2} \cos(x) \,dx \right| \leq \int_d^{\infty} \frac{1}{x^2} \,dx.$$
+
+Luego, 
+\begin{align*}
+ \left|  \int_{d}^{\infty} e^{-\alpha x} \frac{\sin(x)}{x} \,dx\right| &\leq \frac{e^{-\alpha d}}{d}|\cos(d)| + \int_d^{\infty} \frac{1}{x^2} \,dx \\
+ &\leq \frac{2}{d}. 
+\end{align*}
+
+Por lo tanto, eligiendo un $N > 0$ tal que $2/N < \varepsilon$ (independiente de $\alpha$), se verifica que
+$$\left| \int_0^d f(x,\alpha) \,dx- \int_0^{\infty} f(x,\alpha) \,dx \right| = \left|  \int_{d}^{\infty} e^{-\alpha x} \frac{\sin(x)}{x} \,dx \right| \leq \frac{2}{d} < \varepsilon, \quad d \geq N,$$
+
+ésto es, la integral $\int_0^{\infty} f(x,\alpha) \,dx$ converge uniformemente para $\alpha \geq 0$.
+\end{ejemplo}
+
+\subsection{Intercambio del orden de integración}
+
+Ahora, estudiaremos las condiciones suficientes para poder intercambiar el orden de integración en los casos donde$f(x,t)$ se integre en $[a,b] \times [c,\infty[$ o en $[a,\infty [\times [c, \infty[$.
+
+\begin{teorema} \label{TeoA:OrdenIntegracion1}
+    Sea $f(x,t)$ una función continua en $R = [a,b] \times [c, \infty[$. Supongamos que 
+    $$\lim_{d \to + \infty} \int_c^d f(x,t) \,dt = \int_c^{\infty} f(x,t) \,dt$$
+
+    converge uniformemente para $x \in [a,b]$. Entonces, 
+    $$\int_a^b \int_c^{\infty} f(x,t) \,dt \,dx = \int_c^{\infty} \int_a^b f(x,t) \,dx \,dt.$$
+\end{teorema}
+
+Antes de estudiar el otro caso, analicemos el siguiente ejemplo.
+
+\begin{ejemplo}
+Determinemos
+$$\int_1^{\infty} \frac{x^2-y^2}{(x^2+y^2)^2} \,dy = \left. - \frac{x}{x^2+y^2} \right|_1^{\infty} = \frac{1}{y^2+1}.$$
+
+Luego,
+$$\int_1^{\infty} \left( \int_1^{\infty} \frac{x^2-y^2}{(x^2+y^2)^2} \,dx \right) \,dy = \int_1^{\infty} \frac{1}{1+y^2} \,dy = \left. \arctan(y) \right|_1^{\infty} =  \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}.$$
+
+Pero,
+$$\int_1^{\infty} \left( \int_1^{\infty} \frac{x^2-y^2}{(x^2+y^2)^2} \,dy \right) \,dx = - \int_1^{\infty} \frac{1}{1+x^2} \,dx = \left. - \arctan(x) \right|_1^{\infty} = - \frac{\pi}{2} + \frac{\pi}{4} = - \frac{\pi}{4}.$$
+
+Por lo tanto,
+$$\int_1^{\infty} \left( \int_1^{\infty} \frac{x^2-y^2}{(x^2+y^2)^2} \,dy \right) \,dx \neq \int_1^{\infty} \left( \int_1^{\infty} \frac{x^2-y^2}{(x^2+y^2)^2} \,dx \right) \,dy. $$
+
+\end{ejemplo}
+
+\begin{teorema}
+     Sea $f(x,t)$ una función continua en $R = [a, \infty[ \times [c,\infty[$. Supongamos que
+
+     \begin{enumerate}
+         \item Las integrales
+         $$\int_c^{\infty} |f(x,t)| \,dt ~~\text{y}~~ \int_a^{\infty} |f(x,t)|\,dx$$
+
+         convergen uniformemente para cada $x$ en un intervalo finito, y para cada $t$ en un intervalo finito, respectivamente.
+
+         \item Una de las integrales
+         $$\int_a^{\infty} \int_c^{\infty} |f(x,t)| \,dt \,dx  ~~\text{o}~~ \int_c^{\infty} \int_a^{\infty} |f(x,t)|\,dx \,dt $$
+
+         converge.
+
+         Entonces, las integrales 
+        $$\int_a^{\infty} \int_c^{\infty} f(x,t) \,dt \,dx  ~~\text{y}~~ \int_c^{\infty} \int_a^{\infty} f(x,t) \,dx \,dt $$
+
+        también convergen y sus valores coinciden.
+     \end{enumerate}
+\end{teorema}
+
+\section{Valor principal de Cauchy}
+
+Sea $f(x)$ una función continua. Sabemos del cálculo integral de una variable que $\int_{-\infty}^{\infty} f(x)\,dx$ converge si
+$$\lim_{a \to - \infty} \int_{a}^{c}f(x) \,dx; \quad \lim_{b \to + \infty} \int_{c}^{b}f(x) \,dx$$
+
+existen con $c \in \mathbb{R}$ cualquiera y, en tal caso,
+$$\int_{-\infty}^{\infty} f(x) \,x = \lim_{a \to - \infty} \int_{a}^{c}f(x) \,dx +  \lim_{b \to + \infty} \int_{c}^{b}f(x) \,dx .$$
+
+\begin{defi}
+Definimos el \textbf{valor principal de Cauchy} de la integral $\int_{-\infty}^{\infty} f(x)\,dx$ a
+$$V.P. \int_{- \infty}^{\infty} f(x) \,dx = \lim_{a\to + \infty} \int_{-a}^a f(x)\,dx$$
+
+si el límite existe.
+\end{defi}
+
+\textbf{Observación:} El valor principal de Cauchy de una integral puede existir incluso cuando la integral en si misma no es convergente. Por ejemplo, $\int_{-a}^ax dx = 0$ para toda $a$, lo cual implica que $V.P. \int_{-\infty}^{\infty} xdx = 0$, pero la integral en si no converge, pues $\int_0^{\infty} xdx = \infty$. Sin embargo, 
+\begin{shaded}
+$$\int_{\infty}^{\infty} f(x) \,dx < \infty \Rightarrow V.P. \int_{\infty}^{\infty} f(x) \,dx < \infty$$
+\end{shaded}
+
+y ambas integrales coinciden. En efecto, los límites
+$$\lim_{a \to \infty} \int_{-a}^{c}f(x) \,dx; \quad \lim_{a \to + \infty} \int_{c}^{a}f(x) \,dx$$
+
+existen y
+\begin{align*}
+   V.P. \int_{- \infty}^{\infty} f(x) \,dx &= \lim_{a\to + \infty} \int_{-a}^a f(x)\,dx  \\
+   &= \lim_{a\to + \infty} \left(\int_{-a}^{c} f(x) \,dx + \int_c^a f(x) \,dx \right) \\
+   &= \lim_{a\to + \infty} \int_{-a}^{c} f(x) \,dx +  \lim_{a\to + \infty}\int_c^a f(x) \,dx \\
+   &= \int_{- \infty}^{\infty} f(x) \,dx.
+\end{align*} 
+
+Pero supongamos que $f$ es una función par, es decir, $f(-x) = f(x)$ para todo $x \in \mathbb{R}$. Entonces, si el valor principal de Cauchy existe, la integral converge al mismo valor (demuéstrelo!!!!!). De hecho,
+\begin{equation}
+ \int_0^{\infty} f(x) \,dx = \frac{1}{2} \int_{-\infty}^{\infty} f(x) \,dx. \label{IntIPar}   
+\end{equation}
+
+Para el caso de una función $f$ continua en un intervalo $[a,c]$, a excepción de la singularidad en $x = b$, con $a< b < c$. La integral de $f(x)$ está definida por
+$$\int_a^c f(x) \,dx = \lim_{\varepsilon_1 \to 0^-} \int_a^{b + \varepsilon_1} f(x) \,dx+ \lim_{\varepsilon_2 \to 0^+} \int_{b + \varepsilon_2}^b f(x) \,dx,$$
+
+cuando los límites existen. 
+
+\begin{defi}
+Sea la función $f(x)$ continua a excepción de la singularidad en $x = b$. Sea $a$ y $c$, con $a < b< c$. El \textbf{valor principal de Cauchy} de la integral $\int_a^c f(x)\,dx$ está definido por
+$$V.P. \int_{a}^{c} f(x) \,dx = \lim_{\varepsilon \to 0^+} \left[ \int_a^{b-\varepsilon} f(x) \,dx + \int_{b + \varepsilon}^c f(x) \,dx \right]$$
+
+si el límite existe.
+\end{defi}
+
+\begin{ejemplo}
+    La integral
+    $$\int_{-1}^2 \frac{1}{x} \,dx$$
+
+    diverge, pero el valor principal existe.
+    \begin{align*}
+        V.P. \int_{-1}^2 \frac{1}{x} \,dx &=  \lim_{\varepsilon \to 0^+} \left[ \int_{-1}^{-\varepsilon} \frac{1}{x} \,dx + \int_{ \varepsilon}^2 \frac{1}{x} \,dx \right] \\
+        &= \lim_{\varepsilon \to 0^+} \left[ -\int_{\varepsilon}^{1} \frac{1}{x} \,dx + \int_{ \varepsilon}^2 \frac{1}{x} \,dx \right] \\
+        &= \int_1^2 \frac{1}{x} \,dx \\
+        &= \ln(2).
+    \end{align*}
+\end{ejemplo}
