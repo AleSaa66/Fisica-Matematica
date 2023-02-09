@@ -113,10 +113,10 @@ Si suponemos que $\norm{f} = 0$, $f \equiv 0$ y la desigualdad se demuestra triv
  \begin{align*}
      \norm{f\pm g}^2 = \langle  f \pm g , f \pm g \rangle &= \langle f \pm g , f \rangle \pm \langle f \pm g , g\rangle \\
      &= \langle f,f \rangle \pm \langle f , g \rangle^* \pm \langle f,g \rangle +  \langle g,g \rangle \\
-     &= \norm{f}^2 \pm 2 Re(\langle f,g \rangle) + \norm{g}^2.
+     &= \norm{f}^2 \pm 2 \real(\langle f,g \rangle) + \norm{g}^2.
  \end{align*}
  
- Como $\pm Re(z) \leq |z|$ para todo $z \in \mathbb{C}$, obtenemos que 
+ Como $\pm \real(z) \leq |z|$ para todo $z \in \mathbb{C}$, obtenemos que 
  $$\norm{f\pm g}^2 \leq \norm{f}^2+ 2 |\langle f,g \rangle| + \norm{g}^2.$$
  
  Por la desigualdad de  Cauchy-Shwarz:
